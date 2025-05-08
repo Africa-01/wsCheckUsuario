@@ -18,8 +18,13 @@ namespace wsCheckUsuario
     {
         protected async void Page_Load(object sender, EventArgs e)
         {
-            //Llamada patra ejecucion del metodo 
-            await cargaDatosTipoUsuario();
+            // Vaidación de 1er carga de páhina (postBack)
+            if (Page.IsPostBack == false)
+            {
+                //Llamada patra ejecucion del metodo 
+                await cargaDatosTipoUsuario();
+            }
+
         }
         // Creación del método asíncrono para ejecutar el
         // endpoint vwTipoUsuario
@@ -30,7 +35,7 @@ namespace wsCheckUsuario
                 using (HttpClient client = new HttpClient())
                 {
                     // Configuración de la peticion HTTP
-                    string apiUrl = "https://localhost:44335/check/usuario/vwtipousuario";
+                    string apiUrl = "https://localhost:44394/check/usuario/vwtipousuario";
                     // Ejecución del endpoint
                     HttpResponseMessage respuesta = await client.GetAsync(apiUrl);
                     // ---------------------------------------------------
@@ -91,7 +96,7 @@ namespace wsCheckUsuario
                     HttpContent contenido = new StringContent
                                 (data, Encoding.UTF8, "application/json");
                     // Ejecución de la petición HTTP
-                    string apiUrl = "https://localhost:44335/check/usuario/spinsusuario";
+                    string apiUrl = "https://localhost:44394/check/usuario/spinsusuario";
                     // ----------------------------------------------
                     HttpResponseMessage respuesta =
                         await client.PostAsync(apiUrl, contenido);
@@ -156,13 +161,67 @@ namespace wsCheckUsuario
 
         protected async void Button1_Click(object sender, EventArgs e)
         {
-            //Ejecucion asincrona del metodo de insercion de usuario
-            await cargaDatos();
-        }
+            // Nombre
+            if (TextBox2.Text == "")
+            {
+                Response.Write("<script language='javascript'>" +
+                              "alert('El nombre está vacio');" +
+                              "</script>");
+            }
+            else
+            {   //apellido paterno
+                if (TextBox3.Text == "")
+                {
+                    Response.Write("<script language='javascript'>" +
+                                  "alert('El apellido paterno está vacio');" +
+                                  "</script>");
+                }
 
-        protected void TextBox7_TextChanged(object sender, EventArgs e)
-        {
+                else
+                {   //apellido materno
+                    if (TextBox4.Text == "")
+                    {
+                        Response.Write("<script language='javascript'>" +
+                                      "alert('El apellido materno está vacio');" +
+                                      "</script>");
+                    }
 
+
+                    else
+                    {   //usuario
+                        if (TextBox5.Text == "")
+                        {
+                            Response.Write("<script language='javascript'>" +
+                                          "alert('El usuario está vacio');" +
+                                          "</script>");
+                        }
+                        else
+                        {   // contraseña
+                            if (TextBox6.Text == "")
+                            {
+                                Response.Write("<script language='javascript'>" +
+                                              "alert('La contraseña está vacio');" +
+                                              "</script>");
+                            }
+                            else
+                            {   // ruta foto
+                                if (TextBox7.Text == "")
+                                {
+                                    Response.Write("<script language='javascript'>" +
+                                                  "alert('La ruta está vacio');" +
+                                                  "</script>");
+                                }
+                                else
+                                {
+                                    //Ejecucion asincrona del metodo de insercion de usuario
+                                    await cargaDatos();
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -91,7 +91,7 @@
             </td>
             <td width="70%">
 
-                <asp:TextBox ID="TextBox7" runat="server" MaxLength="200" Width="268px" OnTextChanged="TextBox7_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="TextBox7" runat="server" MaxLength="200" Width="268px" ></asp:TextBox>
 
             </td>
         </tr>
