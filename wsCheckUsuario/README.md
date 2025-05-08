@@ -18,3 +18,5 @@
  # Conclusiones
 
  ### Este proyecto va más allá de una simple implementación técnica. Representa un esfuerzo por hacer que la gestión de usuarios sea más ágil, clara y accesible para cualquier persona que lo utilice. Al integrar validaciones, comunicación con APIs y una interfaz intuitiva, se demuestra un compromiso por brindar soluciones funcionales y humanas, que realmente marquen la diferencia en el uso diario del sistema.
+
+ ### nota: se subio el trabajo de la asignacion siguiente por error (le mande mensaje y me dijo que pusiera una nota), gracias!.
